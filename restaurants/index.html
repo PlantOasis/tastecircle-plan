@@ -34,6 +34,8 @@
   .read{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 6px}
   @media(max-width:640px){.read{grid-template-columns:1fr}.desmos{height:380px}}
   .read div{background:#f4f3ee;border-radius:12px;padding:12px 14px;font-size:.9rem}
+  .read div b{display:block;}
+  .read div strong{color:var(--navy);}
   .read div b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);margin-bottom:4px}
   .key{display:flex;flex-wrap:wrap;gap:10px 16px;padding:10px 16px;font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line)}
   .key i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
@@ -98,7 +100,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>f</code> — food cost as a share of the check (0.32 is typical). <code>d</code> — what the deal costs the kitchen in ingredients. <code>n</code> — the restaurant’s net margin on an ordinary visit (0.05).</div>
-    <div><b>Read it</b> On a $28 check, an average customer is worth about <b>$1.40</b>; an empty-seat customer is worth <b>$19</b>; the same customer after a $4 deal is still worth <b>$15</b>. Ten times the average. A deal in a dead hour is not a discount — it’s the cheapest customer a restaurant will ever buy.</div>
+    <div><b>Read it</b> On a $28 check, an average customer is worth about <strong>$1.40</strong>; an empty-seat customer is worth <strong>$19</strong>; the same customer after a $4 deal is still worth <strong>$15</strong>. Ten times the average. A deal in a dead hour is not a discount — it’s the cheapest customer a restaurant will ever buy.</div>
   </div>
 </section>
 
@@ -143,7 +145,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>k</code> — the share of redeemers who are truly new. Set it to 0.65 for any-hour deals, 0.9 for a dead window. <code>c₁ c₂</code> the checks, <code>d₁ d₂</code> what each deal costs the kitchen. The dots mark breakeven.</div>
-    <div><b>Read it</b> Moving k from 0.65 to 0.9 roughly <b>halves</b> the redemptions a spot needs. Six a month for a sit-down place is a low bar; fourteen for a café is one student most weekdays. Everything past breakeven is the restaurant’s — we don’t take a cut of the check.</div>
+    <div><b>Read it</b> Moving k from 0.65 to 0.9 roughly <strong>halves</strong> the redemptions a spot needs. Six a month for a sit-down place is a low bar; fourteen for a café is one student most weekdays. Everything past breakeven is the restaurant’s — we don’t take a cut of the check.</div>
   </div>
 </section>
 
@@ -163,8 +165,8 @@
     <div class="key"><span><i style="background:var(--s1)"></i>Redemptions per spot with S students, r each</span><span><i style="background:var(--s2)"></i>Full-service breakeven (6)</span><span><i style="background:var(--s4)"></i>Café breakeven (14)</span><span><i style="background:var(--s3)"></i>Year-one target: 26 spots</span></div>
   </div>
   <div class="read">
-    <div><b>Drag</b> <code>S</code> — monthly active students (125 today; try 300). <code>r</code> — deals one student redeems a month. <b>Two is a guess</b>: the app has never had live deals, so nobody has measured it; the pilot exists to find it.</div>
-    <div><b>Read it</b> The curve falls as we add spots: the audience is being shared out. Where it crosses the orange line is the most full-service spots we can keep above breakeven (~40 today); the yellow line is the café limit (~18). At 26 paying spots and 125 students, each gets about <b>10 redemptions a month</b> — fine for sit-down places, short for cafés. Grow S to 300 and the whole curve lifts: 26 spots then get 23 each.</div>
+    <div><b>Drag</b> <code>S</code> — monthly active students (125 today; try 300). <code>r</code> — deals one student redeems a month. <strong>Two is a guess</strong>: the app has never had live deals, so nobody has measured it; the pilot exists to find it.</div>
+    <div><b>Read it</b> The curve falls as we add spots: the audience is being shared out. Where it crosses the orange line is the most full-service spots we can keep above breakeven (~40 today); the yellow line is the café limit (~18). At 26 paying spots and 125 students, each gets about <strong>10 redemptions a month</strong> — fine for sit-down places, short for cafés. Grow S to 300 and the whole curve lifts: 26 spots then get 23 each.</div>
   </div>
   <div class="callout"><b>So the rule for Sales:</b> lead with full-service spots, and don’t sign cafés faster than the student count allows — roughly one new café for every 7 new monthly actives. A café signed early that gets 4 redemptions a month will read its report and cancel, and tell the spot next door.</div>
 </section>
@@ -268,7 +270,7 @@
     {id:'d2', latex:'d_2=4', sliderBounds:{min:0,max:15,step:0.25}},
     {id:'cafe', latex:'y=x(kmc_1-d_1)', color:C.blue, lineWidth:2.5},
     {id:'full', latex:'y=x(kmc_2-d_2)', color:C.orange, lineWidth:2.5},
-    {id:'fee',  latex:'y=79', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'fee',  latex:'y-79=0', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
     {id:'be1', latex:'\\left(\\frac{79}{kmc_1-d_1}, 79\\right)', color:C.blue, pointSize:10, showLabel:true, label:'café breaks even', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
     {id:'be2', latex:'\\left(\\frac{79}{kmc_2-d_2}, 79\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service breaks even', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
     {id:'n4', latex:'', text:'m = gross margin after food cost. Value = redemptions × (k·m·check − deal cost). k: 0.65 any hour, 0.9 dead window.'}
@@ -279,8 +281,8 @@
     {id:'S', latex:'S=125', sliderBounds:{min:25,max:1000,step:25}},
     {id:'r', latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
     {id:'per', latex:'y=\\frac{rS}{x}\\left\\{x>0\\right\\}', color:C.blue, lineWidth:2.5},
-    {id:'bfull', latex:'y=6', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'bcafe', latex:'y=14', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'bfull', latex:'y-6=0', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'bcafe', latex:'y-14=0', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
     {id:'tgt', latex:'x-26=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
     {id:'xf', latex:'\\left(\\frac{rS}{6}, 6\\right)', color:C.orange, pointSize:10, showLabel:true, label:'most full-service spots we can carry', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
     {id:'xc', latex:'\\left(\\frac{rS}{14}, 14\\right)', color:C.yellow, pointSize:10, showLabel:true, label:'most cafés we can carry', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},

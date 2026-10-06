@@ -40,6 +40,8 @@
   .read{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 6px}
   @media(max-width:640px){.read{grid-template-columns:1fr}.desmos{height:380px}}
   .read div{background:#f4f3ee;border-radius:12px;padding:12px 14px;font-size:.9rem}
+  .read div b{display:block;}
+  .read div strong{color:var(--navy);}
   .read div b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);margin-bottom:4px}
   .key{display:flex;flex-wrap:wrap;gap:10px 16px;padding:10px 16px;font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line)}
   .key i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
@@ -115,7 +117,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>c</code> — Crumbs an average student earns per day (0–50). The cap line shows the most the economy can ever mint.</div>
-    <div><b>Read it</b> At 19 students and 25 Crumbs a day that’s about <b>$140 of Crumbs a month</b>. At 300 students it’s $2,250. The currency only matters once there are students — which is why Part 7 (growth) decides everything.</div>
+    <div><b>Read it</b> At 19 students and 25 Crumbs a day that’s about <strong>$140 of Crumbs a month</strong>. At 300 students it’s $2,250. The currency only matters once there are students — which is why Part 7 (growth) decides everything.</div>
   </div>
   <div class="callout"><b>Two stages.</b> Now: restaurants fund their own rewards — a redeemed coffee costs them about 40¢ of goods, and they set a monthly cap so it can never run away. Later: Crumbs paid out by brand Quests and bounties are backed by real cash we hold, and we reimburse restaurants when students spend them. That second stage turns Crumbs into paying customers for restaurants, but it needs a lawyer’s sign-off (stored-value rules). Students can <b>never</b> buy Crumbs that pay for food — that would make Crumbs a prepaid card.</div>
 </section>
@@ -139,7 +141,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>r</code> — redemptions a month. Plus includes 100, then $1 each. Pro never charges for redemptions.</div>
-    <div><b>Read it</b> Past 40 plates, Plus and Pro cost <b>exactly the same</b>: Pro is Plus with 40 bounties prepaid. The $120 upgrade is really buying the featured placement, unlimited redemptions and the social feature. Pro only costs <i>more</i> when a spot buys fewer than 40 plates — and pays for itself the moment redemptions pass about 220 a month.</div>
+    <div><b>Read it</b> Past 40 plates, Plus and Pro cost <strong>exactly the same</strong>: Pro is Plus with 40 bounties prepaid. The $120 upgrade is really buying the featured placement, unlimited redemptions and the social feature. Pro only costs <i>more</i> when a spot buys fewer than 40 plates — and pays for itself the moment redemptions pass about 220 a month.</div>
   </div>
 </section>
 
@@ -161,7 +163,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>b</code> — the restaurant’s bounty budget; the dot marks where they are.</div>
-    <div><b>Read it</b> A Plus spot buying 40 plates pays $199 and we keep $139. Charlie’s year-one numbers assume about <b>$107 of usage per paying restaurant per month</b> on top of the subscription — that’s the lever Sales can move without changing a price.</div>
+    <div><b>Read it</b> A Plus spot buying 40 plates pays $199 and we keep $139. Charlie’s year-one numbers assume about <strong>$107 of usage per paying restaurant per month</strong> on top of the subscription — that’s the lever Sales can move without changing a price.</div>
   </div>
 </section>
 
@@ -205,7 +207,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>m</code> — the share on Pro (0.23 = Charlie’s 6 of 26). <code>u</code> — usage dollars per restaurant per month (bounties, redemptions, nights…; $107 in the plan). <code>a</code> — adoption, as a share of Norman’s 282 restaurants (0.09 = year one).</div>
-    <div><b>Read it</b> Each paying restaurant is worth about <b>$214 a month</b> at the plan’s mix. Year one is 9% of Norman. Snackpass reached ~80% of campuses it entered; even 25% of Norman (70 spots) puts restaurants alone near $15,000 a month. Year two opens the 2,756-restaurant metro; year three adds four college towns (Stillwater, Lawrence, Ames, Fayetteville — 125–529 restaurants each).</div>
+    <div><b>Read it</b> Each paying restaurant is worth about <strong>$214 a month</strong> at the plan’s mix. Year one is 9% of Norman. Snackpass reached ~80% of campuses it entered; even 25% of Norman (70 spots) puts restaurants alone near $15,000 a month. Year two opens the 2,756-restaurant metro; year three adds four college towns (Stillwater, Lawrence, Ames, Fayetteville — 125–529 restaurants each).</div>
   </div>
 </section>
 
@@ -224,7 +226,7 @@
   </div>
   <div class="read">
     <div><b>Drag</b> <code>g</code> — weekly growth. 0.05 is 5% a week; 0.15 is a very good semester.</div>
-    <div><b>Read it</b> At 8% a week the first brand gate is about <b>26 weeks out</b> (one semester); at 15% it’s 15 weeks. At 5% it’s a year. Everything in the middle column of the table waits on this line — so Campus & Events (Nights, org Tables, /get installs) isn’t a side job, it’s what moves every other product forward.</div>
+    <div><b>Read it</b> At 8% a week the first brand gate is about <strong>26 weeks out</strong> (one semester); at 15% it’s 15 weeks. At 5% it’s a year. Everything in the middle column of the table waits on this line — so Campus & Events (Nights, org Tables, /get installs) isn’t a side job, it’s what moves every other product forward.</div>
   </div>
 </section>
 
@@ -330,9 +332,9 @@
   calc('g7', {left:-2, right:60, bottom:-100, top:2300}, [
     {id:'g', latex:'g=0.08', sliderBounds:{min:0,max:0.3,step:0.01}},
     {id:'S', latex:'y=19(1+g)^{x}', color:C.blue, lineWidth:2.5},
-    {id:'g1k', latex:'y=143', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'g2k', latex:'y=286', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'gcpm', latex:'y=2000', color:C.pink, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'g1k', latex:'y-143=0', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'g2k', latex:'y-286=0', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'gcpm', latex:'y-2000=0', color:C.pink, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
     {id:'w1', latex:'\\left(\\frac{\\ln(143/19)}{\\ln(1+g)}, 143\\right)', color:C.orange, pointSize:10, showLabel:true, label:'1,000 a week', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
     {id:'w2', latex:'\\left(\\frac{\\ln(286/19)}{\\ln(1+g)}, 286\\right)', color:C.yellow, pointSize:10, showLabel:true, label:'2,000 a week', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
     {id:'w3', latex:'\\left(\\frac{\\ln(2000/19)}{\\ln(1+g)}, 2000\\right)', color:C.pink, pointSize:10, showLabel:true, label:'2,000 a day', labelOrientation:Desmos.LabelOrientations.LEFT},
@@ -343,8 +345,8 @@
   calc('g8', {left:-20, right:2100, bottom:-15, top:260}, [
     {id:'p', latex:'p=0.029', sliderBounds:{min:0,max:0.1,step:0.001}},
     {id:'tc', latex:'y=3.99\\cdot0.85\\cdot p\\cdot x', color:C.yellow, lineWidth:2.5},
-    {id:'plus', latex:'y=79', color:C.blue, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'pro', latex:'y=199', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'plus', latex:'y-79=0', color:C.blue, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'pro', latex:'y-199=0', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
     {id:'now', latex:'(565, 3.99\\cdot0.85\\cdot p\\cdot565)', color:C.yellow, pointSize:10, showLabel:true, label:'all 565 students active', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
     {id:'be', latex:'\\left(\\frac{79}{3.99\\cdot0.85\\cdot p}, 79\\right)', color:C.blue, pointSize:10, showLabel:true, label:'students to equal one Plus spot', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
     {id:'n8', latex:'', text:'$3.99 × 85% after Apple × conversion p × students. Drag p.'}

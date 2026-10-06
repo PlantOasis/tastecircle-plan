@@ -168,7 +168,26 @@
     <div><b>Drag</b> <code>S</code> — monthly active students (125 today; try 300). <code>r</code> — deals one student redeems a month. <strong>Two is a guess</strong>: the app has never had live deals, so nobody has measured it; the pilot exists to find it.</div>
     <div><b>Read it</b> The curve falls as we add spots: the audience is being shared out. Where it crosses the orange line is the most full-service spots we can keep above breakeven (~40 today); the yellow line is the café limit (~18). At 26 paying spots and 125 students, each gets about <strong>10 redemptions a month</strong> — fine for sit-down places, short for cafés. Grow S to 300 and the whole curve lifts: 26 spots then get 23 each.</div>
   </div>
-  <div class="callout"><b>So the rule for Sales:</b> lead with full-service spots, and don’t sign cafés faster than the student count allows — roughly one new café for every 7 new monthly actives. A café signed early that gets 4 redemptions a month will read its report and cancel, and tell the spot next door.</div>
+  <h3>The average lies: redemptions don’t spread evenly</h3>
+  <p>A student redeems two or three deals a month, and there is no reason they pick the same restaurant each time — or spread themselves fairly. They go where they already go. So with 26 spots and 250 redemptions, the typical result is not “10 each”: the three or four best-placed spots take a third of everything, the middle gets 5–8, and the tail gets 2–3. The graph below ranks the spots from most to least popular and asks how many actually clear the line.</p>
+  <div class="graph">
+    <div class="cap"><b>How the redemptions actually land across N spots</b><span>x = spot, ranked by popularity · y = redemptions that spot gets this month</span></div>
+    <div id="g5b" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Redemptions per spot, most popular first</span><span><i style="background:var(--s2)"></i>Full-service breakeven (6)</span><span><i style="background:var(--s4)"></i>Café breakeven (14)</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>N</code> — paying spots. <code>a</code> — how lopsided student choice is (0 = perfectly even; 0.8 is what city-restaurant and app-usage data usually look like; 1.2 is winner-take-most). <code>S</code> and <code>r</code> as before.</div>
+    <div><b>Read it</b> At 26 spots, 125 students, two deals each and a = 0.8: the top spot gets ~48 redemptions, the median spot ~6, the last ~4 — so only about <strong>half the spots clear the full-service line and 4 clear the café line</strong>, even though the average is 10. The count in the graph updates as you drag. Pull <code>a</code> down to 0 and everyone gets 10; that is the world the levers below try to create.</div>
+  </div>
+  <h3>What we do about it</h3>
+  <ul>
+    <li><b>Sign fewer spots than the average allows.</b> Plan on the median spot, not the mean: at a = 0.8 the median gets about 60% of the average. So today’s audience realistically carries ~25 full-service spots, not 40, and ~10 cafés, not 18. One café per 12 new students, one sit-down spot per 5.</li>
+    <li><b>Spread the demand on purpose.</b> The Crumbs map, a rotating “spot of the day” card in the feed, and bigger Crumbs for a first visit to a spot a student has never posted at — each one flattens the curve. This is the product doing the fairness work so Sales doesn’t have to.</li>
+    <li><b>Don’t pack one block.</b> Three Campus Corner coffee shops on Plus in the same month split the same students three ways. Stagger neighbours; sell the second one once the first has its numbers.</li>
+    <li><b>A results guarantee.</b> “If fewer than six students redeem in a month, that month is free.” It moves the risk from the restaurant to us, it is the single strongest line at the counter, and it costs at most $79 per weak spot per month — a cost that disappears if we only sign spots we can actually feed. It also keeps Sales honest about the previous three points.</li>
+    <li><b>Pay-per-visit for the tail.</b> A spot that won’t clear six should not be on $79. Offer <b>$3 per redemption, no subscription</b> instead (the same price as a Bounty): they pay only when a student actually walks in, we still earn on every visit, and they upgrade to Plus the month $3 × redemptions passes $79 — the report will tell them when.</li>
+  </ul>
+  <div class="callout"><b>So the rule for Sales:</b> lead with full-service spots; plan on the median, not the average (~1 sit-down spot per 5 new monthly actives, ~1 café per 12); stagger neighbours; and offer the guarantee. A spot that gets 4 redemptions a month will read its report, cancel, and tell the spot next door — the guarantee makes sure that story is “they gave me the month free” instead.</div>
 </section>
 
 <section id="s6">
@@ -289,6 +308,26 @@
     {id:'at26', latex:'\\left(26, \\frac{rS}{26}\\right)', color:C.aqua, pointSize:10, showLabel:true, label:'each of 26 spots gets this many', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
     {id:'n5', latex:'', text:'Each paying spot receives r·S ÷ (number of spots) redemptions a month. Drag S (students) and r.'}
   ], {xAxisLabel:'paying spots', yAxisLabel:'redemptions per spot per month'});
+
+  // 5b · Zipf-shaped split of r·S redemptions across N ranked spots
+  calc('g5b', {left:0, right:42, bottom:-3, top:60}, [
+    {id:'N', latex:'N=26', sliderBounds:{min:5,max:40,step:1}},
+    {id:'a', latex:'a=0.8', sliderBounds:{min:0,max:1.5,step:0.1}},
+    {id:'S2', latex:'S=125', sliderBounds:{min:25,max:1000,step:25}},
+    {id:'r2', latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
+    {id:'H', latex:'H=\\sum_{k=1}^{N}k^{-a}'},
+    {id:'I', latex:'I=[1,...,N]'},
+    {id:'pts', latex:'\\left(I,\\ \\frac{rS\\cdot I^{-a}}{H}\\right)', color:C.blue, pointSize:9},
+    {id:'bfull2', latex:'y-6=0', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'bcafe2', latex:'y-14=0', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'cnt6', latex:'A=\\sum_{k=1}^{N}\\left\\{\\frac{rS\\cdot k^{-a}}{H}\\ge6:1,0\\right\\}'},
+    {id:'cnt14', latex:'B=\\sum_{k=1}^{N}\\left\\{\\frac{rS\\cdot k^{-a}}{H}\\ge14:1,0\\right\\}'},
+    {id:'lab6', latex:'\\left(N, 6\\right)', color:C.orange, pointSize:0, showLabel:true, label:'${A} of ${N} spots clear 6', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT, labelSize:Desmos.LabelSizes.LARGE},
+    {id:'lab14', latex:'\\left(N, 14\\right)', color:C.yellow, pointSize:0, showLabel:true, label:'${B} of ${N} clear 14', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT, labelSize:Desmos.LabelSizes.LARGE},
+    {id:'avg', latex:'y-\\frac{rS}{N}=0', color:'#9a998f', lineStyle:Desmos.Styles.DOTTED, lineWidth:1.5},
+    {id:'lavg', latex:'\\left(2, \\frac{rS}{N}\\right)', color:'#9a998f', pointSize:0, showLabel:true, label:'the average: ${rS/N}', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'n5b', latex:'', text:'Spot ranked i gets a share proportional to i^(−a) of the r·S redemptions. a=0 is even; 0.8 is typical of how people split among restaurants.'}
+  ], {xAxisLabel:'spots, most popular first', yAxisLabel:'redemptions this month'});
 })();
 </script>
 </body>

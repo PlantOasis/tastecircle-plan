@@ -83,7 +83,7 @@
   <h2><span class="n">1</span>The pitch in one breath</h2>
   <p class="sub">“Fill your dead hours with OU students, and only pay when they show up.”</p>
   <p>Every restaurant near campus has the same two problems: Tuesday at 3pm is empty, and marketing is their second-biggest headache (Toast, 2025). They don’t want another ad platform. They want people in seats they can see, and proof it worked.</p>
-  <p>So the offer is simple. Students already post photos of your food on Taste Circle. Claim your page for free and answer them. Then, for $79 a month, put a deal on the hours you pick — “free side with any bowl, weekdays 2–5” — and students spend the Crumbs they’ve earned to unlock it. They show a code at the counter. You see every redemption, and once a month you get a report: how many came, when, what they ordered, how you rank against the five spots nearest you.</p>
+  <p>So the offer is simple. Students already post photos of your food on Taste Circle. Claim your page for free and answer them. Then, for $79 a month, put a deal on the hours you pick — “free side with any bowl, weekdays 2–5” — and students spend the Crumbs they’ve earned to unlock it. They <b>tap their phone on the TC pad</b> at the counter. You see every redemption, and once a month you get a report: how many came, when, what they ordered, how you rank against the five spots nearest you.</p>
   <div class="callout"><b>The line that lands:</b> “You only win if the seat was empty. So we only let the deal run when your seats are empty.”</div>
 </section>
 
@@ -112,7 +112,7 @@
     </div>
     <div class="tier hi">
       <div class="name">Spot Plus</div><div class="price">$79<span style="font-size:1rem;font-weight:500"> / mo</span></div><div class="per">$790 a year · the one we sell first</div>
-      <ul><li><b>Crumbs deals in the hours you pick</b> — any days, any windows, as many as you like</li><li><b>Unlimited redemptions</b> inside those windows</li><li>Up to 3 deals + a punch card</li><li>Listed on the Crumbs map where students look for places to spend</li><li>Counter QR → opens the camera tagged to you</li><li>Plate Wall: your best student photos on your own website</li><li>Monthly Spot Report</li></ul>
+      <ul><li><b>Crumbs deals in the hours you pick</b> — any days, any windows, as many as you like</li><li><b>Unlimited redemptions</b> inside those windows</li><li>Up to 3 deals + a punch card</li><li>Listed on the Crumbs map where students look for places to spend</li><li>The TC pad on your counter: students tap to redeem; it also opens the camera tagged to you</li><li>Plate Wall: your best student photos on your own website</li><li>Monthly Spot Report</li></ul>
     </div>
     <div class="tier">
       <div class="name">Spot Pro</div><div class="price">$199<span style="font-size:1rem;font-weight:500"> / mo</span></div><div class="per">$1,990 a year</div>
@@ -148,18 +148,25 @@
 </section>
 
 <section id="s5">
-  <h2><span class="n">5</span>How many restaurants the audience can support</h2>
-  <p class="sub">The constraint is us, not them. Students redeem a few deals a month, spread across every spot selling them.</p>
-  <p>If a typical active student redeems about two deals a month, the platform produces <code>2 × (monthly active students)</code> redemptions in total. Divide that by what one spot needs to break even and you get the number of paying restaurants we can keep happy. Sign more than that and redemptions per spot thin out, the report shows it, and they leave.</p>
+  <h2><span class="n">5</span>How many students each restaurant needs</h2>
+  <p class="sub">About 3 active students per sit-down spot, 7 per café. Sign more spots than the audience covers and every one of them gets fewer redemptions.</p>
+  <p>Redemptions come from students, and students are spread across every spot selling a deal. If a typical active student redeems about <code>r</code> deals a month, then with <code>S</code> active students and <code>N</code> paying spots, <b>each spot gets r·S ÷ N redemptions a month</b>. A spot gets a result when that number clears its breakeven from the last section.</p>
+  <div class="facts" style="margin:0 0 14px">
+    <div class="fact"><b>3</b><span>active students per full-service spot (6 ÷ 2)</span></div>
+    <div class="fact"><b>7</b><span>active students per café (14 ÷ 2)</span></div>
+    <div class="fact"><b>~40</b><span>full-service spots today’s 125 students can carry</span></div>
+    <div class="fact"><b>~18</b><span>cafés they can carry</span></div>
+  </div>
   <div class="graph">
-    <div class="cap"><b>Paying spots the audience supports</b><span>x = monthly active students · y = Plus customers that still break even</span></div>
+    <div class="cap"><b>Redemptions each paying spot receives as we sign more of them</b><span>x = paying spots · y = redemptions per spot per month</span></div>
     <div id="g5" class="desmos"></div>
-    <div class="key"><span><i style="background:var(--s1)"></i>Cafés (need B₁ redemptions each)</span><span><i style="background:var(--s2)"></i>Full-service (need B₂ each)</span><span><i style="background:var(--s3)"></i>Today: ~125 monthly actives</span><span><i style="background:var(--s4)"></i>Year-one target: 26 paying</span></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Redemptions per spot with S students, r each</span><span><i style="background:var(--s2)"></i>Full-service breakeven (6)</span><span><i style="background:var(--s4)"></i>Café breakeven (14)</span><span><i style="background:var(--s3)"></i>Year-one target: 26 spots</span></div>
   </div>
   <div class="read">
-    <div><b>Drag</b> <code>r</code> — deals one active student redeems a month. <b>Two is a guess</b> — the app has never had live deals, so nobody has measured it. <code>B₁ B₂</code> are the breakeven counts from the graph above.</div>
-    <div><b>Read it</b> Today’s ~125 monthly actives support about <b>18 café-type or 40 full-service Plus customers</b>. Rule of thumb: <b>7 active students per café, 3 per sit-down spot.</b> Twenty-six paying restaurants is reachable now if the mix leans full-service — which is also the mix that breaks even fastest.</div>
+    <div><b>Drag</b> <code>S</code> — monthly active students (125 today; try 300). <code>r</code> — deals one student redeems a month. <b>Two is a guess</b>: the app has never had live deals, so nobody has measured it; the pilot exists to find it.</div>
+    <div><b>Read it</b> The curve falls as we add spots: the audience is being shared out. Where it crosses the orange line is the most full-service spots we can keep above breakeven (~40 today); the yellow line is the café limit (~18). At 26 paying spots and 125 students, each gets about <b>10 redemptions a month</b> — fine for sit-down places, short for cafés. Grow S to 300 and the whole curve lifts: 26 spots then get 23 each.</div>
   </div>
+  <div class="callout"><b>So the rule for Sales:</b> lead with full-service spots, and don’t sign cafés faster than the student count allows — roughly one new café for every 7 new monthly actives. A café signed early that gets 4 redemptions a month will read its report and cancel, and tell the spot next door.</div>
 </section>
 
 <section id="s6">
@@ -182,7 +189,7 @@
     <div class="who">Open</div>
     <p>“Hi — I’m with Taste Circle, the OU food app. Seventeen students have posted photos of your food in the last month; here they are. The page is yours for free if you want it — hours, menu, you can reply to them. Takes two minutes.”</p>
     <div class="who" style="margin-top:12px">The ask</div>
-    <p>“The thing most places add is a deal that only runs when you’re slow. You pick the hours — say weekdays two to five — students unlock it with Crumbs they’ve earned by posting, show a code here, you ring it up. Seventy-nine a month, as many redemptions as you get. If six students a month who weren’t coming anyway show up in those hours, it’s paid for. Everything after that is yours; we don’t touch the check.”</p>
+    <p>“The thing most places add is a deal that only runs when you’re slow. You pick the hours — say weekdays two to five — students unlock it with Crumbs they’ve earned by posting, tap their phone on the TC pad here, you ring it up. Seventy-nine a month, as many redemptions as you get. If six students a month who weren’t coming anyway show up in those hours, it’s paid for. Everything after that is yours; we don’t touch the check.”</p>
     <div class="who" style="margin-top:12px">Close</div>
     <p>“First month’s the trial. At thirty days you get the report — who came, when, what they ordered, how you rank against the five spots around you — and you decide with your own numbers.”</p>
   </div>
@@ -193,7 +200,7 @@
     <div><b>“How do I know it’s working?”</b>Every redemption is logged with the time it landed. Your monthly report shows redemptions inside your windows against your normal traffic in those hours. If it isn’t working, you’ll see it before we do — and you cancel.</div>
     <div><b>“What does it cost me per redemption?”</b>Just the food in the deal — a free side is about a dollar fifty of ingredients. We don’t take a percentage and there’s no per-redemption fee on Plus.</div>
     <div><b>“Seventy-nine is a lot.”</b>Square Loyalty is $60–140 with no students attached. Yelp’s upgrade is about $180. One table on one Tuesday covers it.</div>
-    <div><b>“Can people cheat the code?”</b>The code changes, and the app checks the student is standing here. A screenshot from last week doesn’t work.</div>
+    <div><b>“Can people cheat it?”</b>They have to physically tap their phone on the pad sitting on your counter, and the app checks they’re standing here. There’s nothing to screenshot or forward.</div>
   </div>
 </section>
 
@@ -215,11 +222,11 @@
   <p class="sub">Four things, in this order. Nothing in this document can be sold until the first two are live.</p>
   <ol>
     <li><b>Deal windows.</b> A deal carries days and a time range. Outside the window the deal is hidden in the app and the code will not validate. This is the whole product.</li>
-    <li><b>Proof of visit.</b> A rotating code or QR the staff show, plus a location check on the student’s phone. Today’s code is a fixed string that can be photographed and shared. Deals, Bounties and Nights all depend on this.</li>
-    <li><b>A redemption log</b> the restaurant can read: time, deal, window it landed in. Also the billing meter for anything pay-as-you-go.</li>
+    <li><b>Proof of visit: the TC pad.</b> A small pad on the counter; the student taps their phone on it to redeem. The pad is what makes a redemption a verified visit, so Deals, Bounties and Nights all depend on it. <i>Honest note:</i> App Review would not pass the last build that carried phone-tap hardware support without a demo video of the pad and a phone working together, so the pad has to exist and be filmed before that build can ship — and the tap support that was pulled from 1.2.1 has to go back in.</li>
+    <li><b>A redemption log</b> the restaurant can read: time, deal, window it landed in, which pad. Also the billing meter for anything pay-as-you-go.</li>
     <li><b>The monthly Spot Report:</b> plates, ratings, rank against the five nearest spots, top dishes, and redemptions inside windows vs. their normal traffic in those hours. The report is the result they are paying for, and it is what makes them renew.</li>
   </ol>
-  <p>Already in the app: Crumbs, the partner screen with rewards and punch cards, the Crumbs map, plate tagging by location, and the server-side redemption function. The gap is windows, the code, and the report.</p>
+  <p>Already in the app: Crumbs, the partner screen with rewards and punch cards, the Crumbs map, plate tagging by location, and the server-side redemption function that verifies a tap against a secret only the server and the pad know. The gap is windows, the pad in restaurants (with the phone-tap support restored and the App Review video filmed), and the report.</p>
 </section>
 
 <footer>
@@ -267,19 +274,19 @@
     {id:'n4', latex:'', text:'m = gross margin after food cost. Value = redemptions × (k·m·check − deal cost). k: 0.65 any hour, 0.9 dead window.'}
   ], {xAxisLabel:'redemptions this month', yAxisLabel:'$ of profit back'});
 
-  // 5 · Supportable spots vs students
-  calc('g5', {left:-20, right:1100, bottom:-5, top:180}, [
-    {id:'r',  latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
-    {id:'B1', latex:'B_1=14', sliderBounds:{min:3,max:40,step:1}},
-    {id:'B2', latex:'B_2=6',  sliderBounds:{min:2,max:30,step:1}},
-    {id:'s1', latex:'y=\\frac{rx}{B_1}', color:C.blue, lineWidth:2.5},
-    {id:'s2', latex:'y=\\frac{rx}{B_2}', color:C.orange, lineWidth:2.5},
-    {id:'tod', latex:'x-125=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
-    {id:'tgt', latex:'y=26', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'t1', latex:'\\left(125, \\frac{125r}{B_1}\\right)', color:C.blue, pointSize:10, showLabel:true, label:'cafés today', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
-    {id:'t2', latex:'\\left(125, \\frac{125r}{B_2}\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service today', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
-    {id:'n5', latex:'', text:'Students make r×x redemptions a month; each spot needs B to cover $79. Drag r, B₁, B₂.'}
-  ], {xAxisLabel:'monthly active students', yAxisLabel:'paying spots that break even'});
+  // 5 · Redemptions per spot as paying spots grow: y = r·S / x
+  calc('g5', {left:-2, right:80, bottom:-3, top:60}, [
+    {id:'S', latex:'S=125', sliderBounds:{min:25,max:1000,step:25}},
+    {id:'r', latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
+    {id:'per', latex:'y=\\frac{rS}{x}\\left\\{x>0\\right\\}', color:C.blue, lineWidth:2.5},
+    {id:'bfull', latex:'y=6', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'bcafe', latex:'y=14', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'tgt', latex:'x-26=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
+    {id:'xf', latex:'\\left(\\frac{rS}{6}, 6\\right)', color:C.orange, pointSize:10, showLabel:true, label:'most full-service spots we can carry', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'xc', latex:'\\left(\\frac{rS}{14}, 14\\right)', color:C.yellow, pointSize:10, showLabel:true, label:'most cafés we can carry', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'at26', latex:'\\left(26, \\frac{rS}{26}\\right)', color:C.aqua, pointSize:10, showLabel:true, label:'each of 26 spots gets this many', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'n5', latex:'', text:'Each paying spot receives r·S ÷ (number of spots) redemptions a month. Drag S (students) and r.'}
+  ], {xAxisLabel:'paying spots', yAxisLabel:'redemptions per spot per month'});
 })();
 </script>
 </body>

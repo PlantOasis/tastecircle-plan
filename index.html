@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taste Circle — How the money works</title>
+<script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<style>
+  :root{
+    --navy:#19203A; --navy-2:#3D4A6B; --ink:#0b0b0b; --ink-2:#52514e; --muted:#8a897f;
+    --paper:#fcfcfb; --card:#ffffff; --line:#e6e4dd;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Poppins,-apple-system,"Segoe UI",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:34px}
+  .eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-2);font-weight:600}
+  h1{font-size:2.1rem;line-height:1.15;margin:8px 0 10px;color:var(--navy)}
+  .lede{font-size:1.08rem;color:var(--ink-2);max-width:62ch}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 0}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .fact b{display:block;font-size:1.35rem;color:var(--navy);line-height:1.1}
+  .fact span{font-size:.78rem;color:var(--muted)}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+  nav.toc a{font-size:.8rem;color:var(--navy-2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--card)}
+  nav.toc a:hover{border-color:var(--navy-2)}
+  section{margin:0 0 54px}
+  h2{font-size:1.45rem;color:var(--navy);margin:0 0 6px;line-height:1.2}
+  h2 .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:.85rem;text-align:center;line-height:28px;margin-right:10px;vertical-align:3px}
+  .sub{color:var(--ink-2);margin:0 0 16px;font-size:1rem}
+  p{margin:0 0 12px;max-width:70ch}
+  ul{margin:0 0 12px 20px;max-width:70ch} li{margin:3px 0}
+  .graph{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0 10px}
+  .graph .cap{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .graph .cap b{font-size:.95rem;color:var(--navy)}
+  .graph .cap span{font-size:.78rem;color:var(--muted)}
+  .desmos{width:100%;height:420px}
+  .read{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 6px}
+  @media(max-width:640px){.read{grid-template-columns:1fr}.desmos{height:380px}}
+  .read div{background:#f4f3ee;border-radius:12px;padding:12px 14px;font-size:.9rem}
+  .read div b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);margin-bottom:4px}
+  .key{display:flex;flex-wrap:wrap;gap:10px 16px;padding:10px 16px;font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line)}
+  .key i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0 6px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:#f4f3ee}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .bars{margin:12px 0 4px}
+  .bar{display:grid;grid-template-columns:190px 1fr 86px;gap:12px;align-items:center;font-size:.88rem;margin:6px 0}
+  .bar .t{height:10px;background:#ebe9e2;border-radius:3px;overflow:hidden}
+  .bar .f{height:100%;border-radius:3px 2px 2px 3px}
+  .bar .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+  .callout{border-left:3px solid var(--s2);background:#fff7f3;padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:.93rem;max-width:70ch}
+  .callout b{color:var(--navy)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:14px 0}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .step b{display:block;color:var(--navy);font-size:.95rem}
+  .step span{font-size:.8rem;color:var(--ink-2)}
+  footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.8rem}
+  .noscript{padding:20px;color:var(--ink-2);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Taste Circle · planning · October 2026</div>
+  <h1>How the money works</h1>
+  <p class="lede">Charlie’s plan, explained the way I’d explain it out loud. Students never pay us to be here. Restaurants, brands, gyms and dietitians pay us for <b>results they can see</b> — a student who walked in, a real photo of their food, a group that booked a night. Crumbs is the engine that makes all of that happen. Every graph below is live: drag the sliders.</p>
+  <div class="facts">
+    <div class="fact"><b>565</b><span>students on the app</span></div>
+    <div class="fact"><b>19 / day</b><span>open it today</span></div>
+    <div class="fact"><b>10,090</b><span>plates posted</span></div>
+    <div class="fact"><b>282</b><span>restaurants in Norman</span></div>
+    <div class="fact"><b>114</b><span>of them already have plates</span></div>
+    <div class="fact"><b>2,756</b><span>restaurants in the OKC metro</span></div>
+  </div>
+  <nav class="toc">
+    <a href="#s1">1 · The one idea</a><a href="#s2">2 · Crumbs</a><a href="#s3">3 · What a restaurant pays</a><a href="#s4">4 · What we keep</a><a href="#s5">5 · Everything we sell</a><a href="#s6">6 · Year one</a><a href="#s7">7 · Growth gates</a><a href="#s8">8 · Students</a><a href="#s9">9 · Open questions</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <h2><span class="n">1</span>The one idea</h2>
+  <p class="sub">We sell results, not reach.</p>
+  <p>An ad platform charges a restaurant to be seen. We charge them when something actually happens: a student posts a plate standing in their restaurant, a student redeems a deal at the counter, a sorority books a Thursday night. That’s how the apps our size that work already charge (Seated, Upside, Ibotta all bill per verified visit or redemption), and it’s what owners say they want — Toast’s 2025 survey has new customers through deals as the #1 thing restaurants would turn to.</p>
+  <p>Then we bundle those results into a monthly subscription (Spot Plus $79, Spot Pro $199) so the bill is predictable and we have recurring revenue.</p>
+  <div class="steps">
+    <div class="step"><b>Student posts a plate</b><span>at the spot, location-checked. Earns Crumbs + the spot’s bounty.</span></div>
+    <div class="step"><b>Spot pays $3</b><span>per verified plate. $1.50 funds the student’s Crumbs, $1.50 is ours.</span></div>
+    <div class="step"><b>Friends see it</b><span>real social proof, on the spot’s own page.</span></div>
+    <div class="step"><b>Friend redeems a deal</b><span>verified at the counter.</span></div>
+    <div class="step"><b>Spot pays $1</b><span>per redemption (or it’s inside their plan).</span></div>
+    <div class="step"><b>Monthly report</b><span>plates, redemptions, rank — the reason they renew.</span></div>
+  </div>
+  <div class="callout"><b>What nobody else has:</b> Beli has rankings but sells nothing to restaurants. Snackpass has points but no social proof. Fetch and Ibotta have brand money but no restaurants and no friends. We have a campus currency earned by posting real meals — which is exactly the proof businesses want to buy.</div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">2</span>Crumbs: the currency underneath everything</h2>
+  <p class="sub">Students earn it by eating. Businesses fund it. Students spend it at the places that pay us.</p>
+  <ul>
+    <li><b>Earn:</b> up to 50 Crumbs a day for posting plates and scanning food, plus prizes (500 to the Meal of the Week winner). Every Crumb comes from a real meal.</li>
+    <li><b>Peg:</b> <b>100 Crumbs = $1</b> of funded value. That number is fixed.</li>
+    <li><b>Fund:</b> restaurants fund rewards (a free side for 300 Crumbs) and bounties; brands fund Quests (“snap your Celsius with lunch: 200 Crumbs”).</li>
+    <li><b>Spend:</b> at partner spots — so Crumbs pull students toward the restaurants that pay us — or on cosmetics in the shop, which stops Crumbs piling up.</li>
+  </ul>
+  <p>The graph shows how much value the student side creates every month, in dollars, depending on how many students are active and how many Crumbs each one earns a day. It’s the size of the “pull” we can point at partner restaurants.</p>
+  <div class="graph">
+    <div class="cap"><b>Crumbs created per month, in dollars</b><span>x = students active per day · y = $ of funded value per month</span></div>
+    <div id="g2" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>At the slider value c (Crumbs per student per day)</span><span><i style="background:var(--s2)"></i>At the 50-a-day cap</span><span><i style="background:var(--s3)"></i>Today: 19 students a day</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>c</code> — Crumbs an average student earns per day (0–50). The cap line shows the most the economy can ever mint.</div>
+    <div><b>Read it</b> At 19 students and 25 Crumbs a day that’s about <b>$140 of Crumbs a month</b>. At 300 students it’s $2,250. The currency only matters once there are students — which is why Part 7 (growth) decides everything.</div>
+  </div>
+  <div class="callout"><b>Two stages.</b> Now: restaurants fund their own rewards — a redeemed coffee costs them about 40¢ of goods, and they set a monthly cap so it can never run away. Later: Crumbs paid out by brand Quests and bounties are backed by real cash we hold, and we reimburse restaurants when students spend them. That second stage turns Crumbs into paying customers for restaurants, but it needs a lawyer’s sign-off (stored-value rules). Students can <b>never</b> buy Crumbs that pay for food — that would make Crumbs a prepaid card.</div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">3</span>What a restaurant pays</h2>
+  <p class="sub">Free → $79 → $199, plus pay-per-result on top.</p>
+  <table>
+    <tr><th>Tier</th><th>Price</th><th>What it buys</th><th>Who it’s for</th></tr>
+    <tr><td><b>Your Spot</b></td><td class="num">Free</td><td>Claim the page students already made for you. Hours, menu, reply as the restaurant, see plates and ratings. Same move as claiming Yelp or Google.</td><td>All 282 in Norman, starting with the 114 that have plates.</td></tr>
+    <tr><td><b>Spot Plus</b></td><td class="num">$79 / mo</td><td>Crumbs rewards (3 + a punch card, 100 redemptions a month included), listed on the Crumbs map, Plate Wall for their website, counter QR, monthly report, verified badge.</td><td>Cafés, fast-casual, late-night spots near campus (169 in Norman).</td></tr>
+    <tr><td><b>Spot Pro</b></td><td class="num">$199 / mo</td><td>Everything in Plus + 40 bounties a month ($120 worth), featured placement, unlimited redemptions, first dibs on group requests, a social feature a month, the quarterly Dining Report.</td><td>Full-service and destination spots (110), new openings.</td></tr>
+    <tr><td><b>Plate Bounty</b></td><td class="num">$3 / plate</td><td>“Next 50 plates here earn 150 bonus Crumbs.” Billed only for plates that exist, location-checked, moderated.</td><td>Any Plus customer; places with thin Google photos.</td></tr>
+    <tr><td><b>Crumbs Deal</b></td><td class="num">$1 / redemption</td><td>A verified visit, confirmed at the counter. Aimable at slow hours. (Groupon takes 30–50% of a voucher.)</td><td>Dead weeknights. Inside Plus (100/mo) and Pro (unlimited).</td></tr>
+  </table>
+  <p>Here’s the same thing as a bill. The x-axis is how many bounty plates a spot buys in a month; <code>r</code> is how many deals students redeem there. Watch where the Plus and Pro lines meet.</p>
+  <div class="graph">
+    <div class="cap"><b>A restaurant’s monthly bill</b><span>x = bounty plates bought this month · y = $ billed</span></div>
+    <div id="g3" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Spot Plus</span><span><i style="background:var(--s2)"></i>Spot Pro</span><span><i style="background:var(--s4)"></i>No plan, pay as you go</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>r</code> — redemptions a month. Plus includes 100, then $1 each. Pro never charges for redemptions.</div>
+    <div><b>Read it</b> Past 40 plates, Plus and Pro cost <b>exactly the same</b>: Pro is Plus with 40 bounties prepaid. The $120 upgrade is really buying the featured placement, unlimited redemptions and the social feature. Pro only costs <i>more</i> when a spot buys fewer than 40 plates — and pays for itself the moment redemptions pass about 220 a month.</div>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="n">4</span>What we actually keep</h2>
+  <p class="sub">Not everything a restaurant pays is ours.</p>
+  <p>On a $3 bounty, $1.50 becomes the student’s Crumbs and $1.50 is our fee. Subscriptions and redemption fees are 100% ours. On the student side, Apple takes 15%. This graph is one Spot Plus customer: the top line is what they pay, the middle is what we keep, the gap is Crumbs we handed to students (which then get spent at partner spots — so it isn’t lost, it’s the engine).</p>
+  <div class="graph">
+    <div class="cap"><b>One Spot Plus customer, per month</b><span>x = bounty plates · y = dollars</span></div>
+    <div id="g4" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>They pay</span><span><i style="background:var(--s3)"></i>We keep</span><span><i style="background:var(--s2)"></i>Crumbs funded for students</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>b</code> — the restaurant’s bounty budget; the dot marks where they are.</div>
+    <div><b>Read it</b> A Plus spot buying 40 plates pays $199 and we keep $139. Charlie’s year-one numbers assume about <b>$107 of usage per paying restaurant per month</b> on top of the subscription — that’s the lever Sales can move without changing a price.</div>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="n">5</span>Everything we sell, in one table</h2>
+  <p class="sub">Four buyers. Restaurants are the core; the rest grow with the audience.</p>
+  <table>
+    <tr><th>Buyer</th><th>Product</th><th>Price</th><th>When we can sell it</th></tr>
+    <tr><td rowspan="5"><b>Restaurants</b><br><span style="color:var(--muted);font-size:.8rem">Sales owns</span></td><td>Your Spot · Plus · Pro · Bounties · Deals</td><td class="num">Free · $79 · $199 · $3 · $1</td><td>Now (needs billing + a staff code)</td></tr>
+    <tr><td>Group requests · Fundraiser Nights</td><td class="num">$20 · $75</td><td>Now</td></tr>
+    <tr><td>Opening Week (new restaurants, spot live before the doors open)</td><td class="num">$499</td><td>Now</td></tr>
+    <tr><td>Spotlights (a labelled week in the feed / map / search)</td><td class="num">$49 / wk</td><td>Now, small; per-view pricing past ~2,000 students a day</td></tr>
+    <tr><td>Verified Macros (we calculate their menu’s nutrition) · Norman Dining Report</td><td class="num">$299 + $29/mo · $149/qtr</td><td>Now · once ~1,000 tagged plates a month</td></tr>
+    <tr><td rowspan="4"><b>Brands</b><br><span style="color:var(--muted);font-size:.8rem">drinks, snacks, delivery, banks</span></td><td>Crumb Quests (“snap your Celsius with lunch”, barcode + photo verified)</td><td class="num">$1 / completion + the Crumbs · $1,000 min</td><td>Local pilot now; regional at ~1,000 students a week</td></tr>
+    <tr><td>Campus Nights &amp; sampling (with an OU org, recap included)</td><td class="num">$1,500–2,500 / night</td><td>Now</td></tr>
+    <tr><td>Sponsored Challenges · Taste Panel polls · Student Offers (affiliate)</td><td class="num">$750–2,500 · $3–8 / answer · $10–95 / signup</td><td>Now / ~1,500 a week / now</td></tr>
+    <tr><td>Official Partner · Scan Insights</td><td class="num">$5–25K / yr</td><td>At 10,000 monthly users or 5+ campuses</td></tr>
+    <tr><td rowspan="3"><b>Wellness</b><br><span style="color:var(--muted);font-size:.8rem">31 gyms in Norman · ~1,230 OK dietitians</span></td><td>Coach View (a dietitian sees clients’ logs and plates, with consent)</td><td class="num">$39 / mo + $2.50 per extra client</td><td>Now</td></tr>
+    <tr><td>Gym Challenges (a 4-week Table challenge for members)</td><td class="num">$1.25 / participant / mo · $250 min</td><td>Now</td></tr>
+    <tr><td>Campus Challenge licence (Housing, Fitness &amp; Rec)</td><td class="num">$500–2,500 / semester</td><td>Now — OU departments can buy under $5,000 without procurement</td></tr>
+    <tr><td rowspan="2"><b>Students</b><br><span style="color:var(--muted);font-size:.8rem">small streams · Apple keeps 15%</span></td><td>TC Plus (more AI photo logs, Taste Wrapped, unlimited Tables, cosmetics)</td><td class="num">$3.99 / mo · $29.99 / yr</td><td>Now</td></tr>
+    <tr><td>The Shop (frames, stickers, icons, streak restores) — cash or earned Crumbs</td><td class="num">$0.49–4.99</td><td>Now</td></tr>
+  </table>
+  <div class="callout"><b>Where Station overlaps:</b> Station already sells restaurants review requests, Google visibility, websites and SMS. Taste Circle sells only what lives inside the app. When one of our restaurants needs a website, Sales introduces Station and we earn a referral. Customers never hear “GoHighLevel” — it runs underneath both.</div>
+</section>
+
+<section id="s6">
+  <h2><span class="n">6</span>Year one, and how it scales</h2>
+  <p class="sub">Charlie’s presets: 26 paying restaurants in Norman (20 Plus, 6 Pro) → $8,994 a month, $107,923 a year. 62% of it from restaurants.</p>
+  <div class="bars">
+    <div class="bar"><span>Restaurants</span><div class="t"><div class="f" style="width:62%;background:var(--s1)"></div></div><span class="v">$5,558 · 62%</span></div>
+    <div class="bar"><span>Brands</span><div class="t"><div class="f" style="width:26%;background:var(--s2)"></div></div><span class="v">$2,350 · 26%</span></div>
+    <div class="bar"><span>Wellness</span><div class="t"><div class="f" style="width:9%;background:var(--s3)"></div></div><span class="v">$831 · 9%</span></div>
+    <div class="bar"><span>Students</span><div class="t"><div class="f" style="width:3%;background:var(--s4)"></div></div><span class="v">$255 · 3%</span></div>
+  </div>
+  <p>None of these numbers has been tested on a buyer yet — they’re the starting assumptions. The graph turns the calculator into a curve: monthly revenue as a function of how many restaurants pay us. The slope is what one more paying restaurant is worth.</p>
+  <div class="graph">
+    <div class="cap"><b>Monthly revenue vs paying restaurants</b><span>x = paying restaurants · y = $ per month</span></div>
+    <div id="g6" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Total monthly revenue</span><span><i style="background:var(--s2)"></i>Restaurants only</span><span><i style="background:var(--s3)"></i>Charlie’s year-one point (26)</span><span><i style="background:var(--s4)"></i>Adoption slider a × 282 Norman restaurants</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>m</code> — the share on Pro (0.23 = Charlie’s 6 of 26). <code>u</code> — usage dollars per restaurant per month (bounties, redemptions, nights…; $107 in the plan). <code>a</code> — adoption, as a share of Norman’s 282 restaurants (0.09 = year one).</div>
+    <div><b>Read it</b> Each paying restaurant is worth about <b>$214 a month</b> at the plan’s mix. Year one is 9% of Norman. Snackpass reached ~80% of campuses it entered; even 25% of Norman (70 spots) puts restaurants alone near $15,000 a month. Year two opens the 2,756-restaurant metro; year three adds four college towns (Stillwater, Lawrence, Ames, Fayetteville — 125–529 restaurants each).</div>
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="n">7</span>The gates: what unlocks when</h2>
+  <p class="sub">Most of the brand and data products need an audience we don’t have yet. This is the honest part.</p>
+  <table>
+    <tr><th>Now</th><th>At ~1,000–2,000 students a week</th><th>At 10,000 a month, or 5+ campuses</th></tr>
+    <tr><td>Your Spot · Plus · Pro · Bounties · Deals · Group requests · Nights · Opening Week · Campus Nights · Coach View · Gym Challenges · Campus licence · Student Offers · Verified Macros · TC Plus · Shop</td><td>Crumb Quests for regional brands · Taste Panel · Spotlights priced per view · Sponsored Challenges at scale · Norman Dining Report</td><td>Official Partner · Scan Insights · data licensing · national brand Quests · the Crumbs exchange (after legal)</td></tr>
+  </table>
+  <p>Today 19 students open the app a day. The graph asks: if daily actives grow by <code>g</code> each week, when do we cross each gate? Dashed lines are the gates, converted to students per day (1,000 a week ≈ 143 a day; 2,000 ≈ 286; per-view pricing at 2,000 a day).</p>
+  <div class="graph">
+    <div class="cap"><b>Students per day over time</b><span>x = weeks from now · y = students active per day</span></div>
+    <div id="g7" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Daily actives at weekly growth g</span><span><i style="background:var(--s2)"></i>Gate: 1,000 a week</span><span><i style="background:var(--s4)"></i>Gate: 2,000 a week</span><span><i style="background:var(--s5)"></i>Gate: 2,000 a day (ads priced per view)</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>g</code> — weekly growth. 0.05 is 5% a week; 0.15 is a very good semester.</div>
+    <div><b>Read it</b> At 8% a week the first brand gate is about <b>26 weeks out</b> (one semester); at 15% it’s 15 weeks. At 5% it’s a year. Everything in the middle column of the table waits on this line — so Campus & Events (Nights, org Tables, /get installs) isn’t a side job, it’s what moves every other product forward.</div>
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="n">8</span>Why students aren’t the customer</h2>
+  <p class="sub">TC Plus and the Shop exist, but they’re rounding errors next to one restaurant.</p>
+  <p>Health and fitness apps convert about 2.9% of users to a paid tier. At $3.99 with Apple’s 15% off, that’s roughly <b>10¢ per active student per month</b>. One Spot Plus subscription is $79 — the same as about 800 students’ worth of TC Plus. That’s the whole argument for selling to businesses and keeping the app free for students.</p>
+  <div class="graph">
+    <div class="cap"><b>Student revenue vs one restaurant</b><span>x = monthly active students · y = $ per month</span></div>
+    <div id="g8" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s4)"></i>TC Plus revenue at conversion p</span><span><i style="background:var(--s1)"></i>One Spot Plus ($79)</span><span><i style="background:var(--s2)"></i>One Spot Pro ($199)</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>p</code> — the share of students who subscribe (0.029 is the industry rate).</div>
+    <div><b>Read it</b> Even at 565 students, every one of them active, TC Plus is about $55 a month. Barcode scanning stays free on purpose (MyFitnessPal got burned locking it); the paid tier is only the features that cost us money to run, like extra AI photo logs.</div>
+  </div>
+</section>
+
+<section id="s9">
+  <h2><span class="n">9</span>What still has to be decided</h2>
+  <p class="sub">Charlie’s questions, in the order they block things.</p>
+  <ul>
+    <li><b>Is the Crumbs-based restaurant model the core?</b> Free Spot → Plus $79 → Pro $199, plus $3 a plate and $1 a redemption. Everything else hangs off this.</li>
+    <li><b>Proof of visit:</b> a staff code, or a QR that changes every minute? Deals, Bounties and Nights all need one. Today’s code is a fixed string that can be photographed.</li>
+    <li><b>The $3 split:</b> 150 Crumbs to the student, $1.50 to us — and are bounty Crumbs backed by that cash from day one?</li>
+    <li><b>Lawyer:</b> for Stage 2 Crumbs (brand-backed, reimbursing restaurants), prize rules for challenges (Apple 5.3), and the CARD Act check on Student Offers (no credit cards marketed on campus).</li>
+    <li><b>Station or Taste Circle</b> sells reviews, websites and SMS? Recommended: we sell only what’s in the app and refer the rest.</li>
+    <li><b>Public Spot pages</b> show students’ public plates — fine, with a way for a student to hide theirs?</li>
+    <li><b>Self-serve checkout</b> on /pricing, or Sales closes every deal? Recommended: both, with a welcome call after every self-serve signup.</li>
+    <li><b>A separate Stripe account</b> for Taste Circle LLC? Recommended: yes.</li>
+  </ul>
+  <div class="callout"><b>Fix this week, before any of it:</b> the website still says things that aren’t true (“end-to-end encrypted”, “no feed”), its App Store link 404s, /privacy and /support 404 (the App Store requires them), and every friend invite to someone without the app has been failing. There’s a ready patch; the only blocker is finding which Netlify account owns tastecircle.org. Also: new passwords on every social account, with Tracy added through team roles so removing access later is one click.</div>
+</section>
+
+<footer>
+  Written from Charlie’s plan (version 2, 5 October 2026). Prices are proposals, untested with buyers. Market counts: Census County Business Patterns 2023; comparables from each vendor’s own price page. Graphs are live Desmos calculators — drag any slider, or type over a number in the left panel.
+  <noscript><div class="noscript">The graphs need JavaScript and an internet connection (they load from desmos.com).</div></noscript>
+</footer>
+</div>
+
+<script>
+(function(){
+  if (!window.Desmos) { document.querySelectorAll('.desmos').forEach(function(el){ el.innerHTML='<div class="noscript">Graph couldn’t load — this page needs an internet connection to reach desmos.com.</div>'; }); return; }
+  var C = {blue:'#2a78d6', orange:'#eb6834', aqua:'#1baf7a', yellow:'#eda100', pink:'#e87ba4'};
+  function calc(id, bounds, exprs, opts){
+    var el=document.getElementById(id); if(!el) return;
+    var c=Desmos.GraphingCalculator(el, Object.assign({
+      keypad:false, settingsMenu:false, expressionsCollapsed:false, border:false,
+      zoomButtons:true, lockViewport:false, xAxisLabel:'', yAxisLabel:'', fontSize:13
+    }, opts||{}));
+    c.setMathBounds(bounds);
+    exprs.forEach(function(e){ c.setExpression(e); });
+    el._calc=c;
+  }
+
+  // 2 · Crumbs created per month in dollars.  y = x * c * 30 / 100
+  calc('g2', {left:-10, right:420, bottom:-200, top:3600}, [
+    {id:'c', latex:'c=25', sliderBounds:{min:0,max:50,step:1}},
+    {id:'f1', latex:'y=0.3cx', color:C.blue, lineWidth:2.5},
+    {id:'f2', latex:'y=15x', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'today', latex:'x-19=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
+    {id:'pt', latex:'(19, 0.3\\cdot c\\cdot 19)', color:C.aqua, pointSize:11, showLabel:true, label:'today: 19 students', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'n2', latex:'', text:'Blue: at c Crumbs/student/day. Orange dashed: the 50-a-day cap. 100 Crumbs = $1.'}
+  ], {xAxisLabel:'students active per day', yAxisLabel:'$ of Crumbs per month'});
+
+  // 3 · Restaurant monthly bill vs bounty plates (x), redemptions r (slider)
+  calc('g3', {left:-5, right:120, bottom:-40, top:620}, [
+    {id:'r', latex:'r=120', sliderBounds:{min:0,max:400,step:10}},
+    {id:'plus', latex:'y=79+3x+\\max(0,r-100)', color:C.blue, lineWidth:2.5},
+    {id:'pro',  latex:'y=199+3\\max(0,x-40)', color:C.orange, lineWidth:2.5},
+    {id:'payg', latex:'y=3x+r', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'v40', latex:'x-40=0', color:'#999', lineStyle:Desmos.Styles.DOTTED, lineWidth:1},
+    {id:'lab', latex:'(40, 199)', color:C.orange, pointSize:9, showLabel:true, label:'40 plates: Pro includes these', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'n3', latex:'', text:'Plus includes 100 redemptions, then $1 each. Pro: unlimited redemptions, 40 bounties included. Drag r.'}
+  ], {xAxisLabel:'bounty plates bought this month', yAxisLabel:'$ billed per month'});
+
+  // 4 · One Spot Plus customer: pay vs keep vs crumbs funded
+  calc('g4', {left:-5, right:120, bottom:-30, top:460}, [
+    {id:'b', latex:'b=40', sliderBounds:{min:0,max:120,step:5}},
+    {id:'pay',  latex:'y=79+3x', color:C.blue, lineWidth:2.5},
+    {id:'keep', latex:'y=79+1.5x', color:C.aqua, lineWidth:2.5},
+    {id:'fund', latex:'y=1.5x', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'p1', latex:'(b, 79+3b)', color:C.blue, pointSize:10, showLabel:true, label:'they pay', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'p2', latex:'(b, 79+1.5b)', color:C.aqua, pointSize:10, showLabel:true, label:'we keep', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'p3', latex:'(b, 1.5b)', color:C.orange, pointSize:10, showLabel:true, label:'Crumbs to students', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'n4', latex:'', text:'Subscription is 100% ours; of each $3 bounty, $1.50 funds Crumbs. Drag b.'}
+  ], {xAxisLabel:'bounty plates per month', yAxisLabel:'$ per month'});
+
+  // 6 · Revenue vs paying restaurants.  sub mix m, usage u, fixed non-restaurant F=3436
+  calc('g6', {left:-5, right:140, bottom:-2000, top:36000}, [
+    {id:'m', latex:'m=0.23', sliderBounds:{min:0,max:1,step:0.01}},
+    {id:'u', latex:'u=107', sliderBounds:{min:0,max:400,step:1}},
+    {id:'a', latex:'a=0.09', sliderBounds:{min:0,max:1,step:0.01}},
+    {id:'F', latex:'F=3436'},
+    {id:'rest', latex:'R(x)=x\\left((1-m)79+199m+u\\right)', color:C.orange, lineWidth:2.5},
+    {id:'tot',  latex:'y=R(x)+F', color:C.blue, lineWidth:2.5},
+    {id:'y1', latex:'(26, R(26)+F)', color:C.aqua, pointSize:11, showLabel:true, label:'year one: 26 paying → $8,994/mo', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'ad', latex:'(282a, R(282a)+F)', color:C.yellow, pointSize:11, showLabel:true, label:'adoption a of Norman', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'n6', latex:'', text:'F = everything not from restaurants in the plan ($3,436/mo: brands, wellness, students). Drag m, u, a.'}
+  ], {xAxisLabel:'paying restaurants', yAxisLabel:'$ per month'});
+
+  // 7 · Growth gates. S(t)=19(1+g)^t
+  calc('g7', {left:-2, right:60, bottom:-100, top:2300}, [
+    {id:'g', latex:'g=0.08', sliderBounds:{min:0,max:0.3,step:0.01}},
+    {id:'S', latex:'y=19(1+g)^{x}', color:C.blue, lineWidth:2.5},
+    {id:'g1k', latex:'y=143', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'g2k', latex:'y=286', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'gcpm', latex:'y=2000', color:C.pink, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'w1', latex:'\\left(\\frac{\\ln(143/19)}{\\ln(1+g)}, 143\\right)', color:C.orange, pointSize:10, showLabel:true, label:'1,000 a week', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'w2', latex:'\\left(\\frac{\\ln(286/19)}{\\ln(1+g)}, 286\\right)', color:C.yellow, pointSize:10, showLabel:true, label:'2,000 a week', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'w3', latex:'\\left(\\frac{\\ln(2000/19)}{\\ln(1+g)}, 2000\\right)', color:C.pink, pointSize:10, showLabel:true, label:'2,000 a day', labelOrientation:Desmos.LabelOrientations.LEFT},
+    {id:'n7', latex:'', text:'x is weeks from now. Points show the week each gate is crossed. Drag g.'}
+  ], {xAxisLabel:'weeks from now', yAxisLabel:'students per day'});
+
+  // 8 · Students vs one restaurant
+  calc('g8', {left:-20, right:2100, bottom:-15, top:260}, [
+    {id:'p', latex:'p=0.029', sliderBounds:{min:0,max:0.1,step:0.001}},
+    {id:'tc', latex:'y=3.99\\cdot0.85\\cdot p\\cdot x', color:C.yellow, lineWidth:2.5},
+    {id:'plus', latex:'y=79', color:C.blue, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'pro', latex:'y=199', color:C.orange, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'now', latex:'(565, 3.99\\cdot0.85\\cdot p\\cdot565)', color:C.yellow, pointSize:10, showLabel:true, label:'all 565 students active', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'be', latex:'\\left(\\frac{79}{3.99\\cdot0.85\\cdot p}, 79\\right)', color:C.blue, pointSize:10, showLabel:true, label:'students to equal one Plus spot', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'n8', latex:'', text:'$3.99 × 85% after Apple × conversion p × students. Drag p.'}
+  ], {xAxisLabel:'monthly active students', yAxisLabel:'$ per month'});
+})();
+</script>
+</body>
+</html>

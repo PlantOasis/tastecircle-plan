@@ -78,7 +78,7 @@
     <div class="fact"><b>2,756</b><span>restaurants in the OKC metro</span></div>
   </div>
   <nav class="toc">
-    <a href="#s1">1 · The one idea</a><a href="#s2">2 · Crumbs</a><a href="#s3">3 · What a restaurant pays</a><a href="#s3b">3½ · Does Plus pay for itself?</a><a href="#s4">4 · What we keep</a><a href="#s5">5 · Everything we sell</a><a href="#s6">6 · Year one</a><a href="#s7">7 · Growth gates</a><a href="#s8">8 · Students</a><a href="#s9">9 · Open questions</a>
+    <a href="#s1">1 · The one idea</a><a href="#s2">2 · Crumbs</a><a href="#s3">3 · What a restaurant pays</a><a href="#s3b">3½ · Restaurant playbook</a><a href="#s4">4 · What we keep</a><a href="#s5">5 · Everything we sell</a><a href="#s6">6 · Year one</a><a href="#s7">7 · Growth gates</a><a href="#s8">8 · Students</a><a href="#s9">9 · Open questions</a>
   </nav>
 </header>
 
@@ -145,40 +145,9 @@
 
 
 <section id="s3b">
-  <h2><span class="n">3½</span>Does Spot Plus pay for itself?</h2>
-  <p class="sub">The first thing to build: deals in a restaurant’s weakest hours, with unlimited redemptions.</p>
-  <p>A restaurant only gets a result from Plus if the deals bring in visits that wouldn’t have happened. So the value of one redemption is: the share of redeemers who are genuinely new, times the gross profit on their check (about 68% of it after food cost), minus what the deal cost in ingredients. Two things change that number a lot: how big the check is, and <b>when</b> the deal is valid. A free side at 3pm on a Tuesday goes to a student who would otherwise not have been there; the same side at Friday dinner often goes to someone who was coming anyway.</p>
-  <table>
-    <tr><th></th><th>Campus café / fast-casual</th><th>Full-service spot</th></tr>
-    <tr><td>Typical student check</td><td class="num">$12</td><td class="num">$28</td></tr>
-    <tr><td>Gross profit on it (≈68%)</td><td class="num">$8.16</td><td class="num">$19.04</td></tr>
-    <tr><td>Deal cost in ingredients</td><td class="num">$1.50</td><td class="num">$4.00</td></tr>
-    <tr><td>Value per redemption, <b>any hour</b> (~65% of redeemers are new)</td><td class="num">$3.80</td><td class="num">$8.40</td></tr>
-    <tr><td>Value per redemption, <b>weak hours only</b> (~90% new — the seats were empty)</td><td class="num"><b>$5.85</b></td><td class="num"><b>$13.10</b></td></tr>
-    <tr><td>Redemptions a month to cover $79, weak hours only</td><td class="num"><b>14</b> (≈3 a week)</td><td class="num"><b>6</b> (≈1–2 a week)</td></tr>
-  </table>
-  <div class="graph">
-    <div class="cap"><b>What one Spot Plus customer gets back</b><span>x = redemptions this month · y = $ of profit from those visits</span></div>
-    <div id="g3b" class="desmos"></div>
-    <div class="key"><span><i style="background:var(--s1)"></i>Café: check c₁, deal cost d₁</span><span><i style="background:var(--s2)"></i>Full-service: check c₂, deal cost d₂</span><span><i style="background:var(--s4)"></i>The $79 they paid</span></div>
-  </div>
-  <div class="read">
-    <div><b>Drag</b> <code>k</code> — the share of redeemers who are truly new (0.65 any hour; 0.9 in a dead window). <code>c₁ c₂</code> the checks, <code>d₁ d₂</code> what each deal costs the kitchen. The dots mark breakeven.</div>
-    <div><b>Read it</b> Limiting deals to weak hours moves k from 0.65 to 0.9 and roughly <b>halves</b> the redemptions a spot needs. Six a month for a sit-down place is a low bar; fourteen for a café is one student most weekdays.</div>
-  </div>
-
-  <p style="margin-top:18px">The real limit is on our side: redemptions come from students, and students are spread across every spot selling deals. If a typical active student redeems about two deals a month, the platform makes <code>2 × (monthly active students)</code> redemptions in total. Divide by what a spot needs and you get how many paying restaurants we can keep happy.</p>
-  <div class="graph">
-    <div class="cap"><b>How many Spot Plus customers the audience can support</b><span>x = monthly active students · y = paying restaurants that still break even</span></div>
-    <div id="g3c" class="desmos"></div>
-    <div class="key"><span><i style="background:var(--s1)"></i>Cafés (need B₁ redemptions each)</span><span><i style="background:var(--s2)"></i>Full-service (need B₂ each)</span><span><i style="background:var(--s3)"></i>Today: ~125 monthly actives</span><span><i style="background:var(--s4)"></i>Charlie’s year-one target: 26</span></div>
-  </div>
-  <div class="read">
-    <div><b>Drag</b> <code>r</code> — deals one active student redeems a month (2 is the guess; nobody has measured it yet). <code>B₁ B₂</code> — the breakeven redemptions from the first graph.</div>
-    <div><b>Read it</b> Today’s ~125 monthly actives can support about <b>18 café-type or 40 full-service Plus customers</b> — so 26 is reachable now if the mix leans full-service. Sign more than the line allows and redemptions per spot thin out below breakeven; their report shows it, and they leave. Rule of thumb: ~7 active students per café, ~3 per sit-down spot.</div>
-  </div>
-  <div class="callout"><b>Proposed tier change.</b> Spot Plus $79: <b>unlimited redemptions, inside weak-hour windows the restaurant picks</b> (any days, any times, as many windows as they like). The window is the safety valve — a redeemed visit at a dead hour is revenue even with the deal, so there’s no reason to cap it or charge $1 after 100 (the plan only had $400 a month riding on those fees). Spot Pro $199: deals at <b>any</b> hour, plus 40 bounties and featured placement — so the tiers now mean different things instead of Pro being Plus with prepaid bounties.</div>
-  <p><b>To build first, in order:</b> (1) deal windows — days and a time range; outside it the deal is hidden and the code won’t validate; (2) proof of visit — a rotating QR or staff code, since today’s fixed string can be photographed; (3) a redemption log the restaurant can see, with the window each one landed in; (4) the monthly Spot Report: redemptions inside windows against their normal traffic in those hours. That report <i>is</i> the result they’re paying for.</p>
+  <h2><span class="n">3½</span>The restaurant playbook</h2>
+  <p class="sub">Restaurants get their own document.</p>
+  <div class="callout"><b>→ <a href="restaurants/" style="color:var(--navy)">Restaurants: the offer, the math, and how we sell it</a></b><br>Why an empty seat is the product, the three tiers (Plus is now unlimited redemptions inside weak-hour windows), whether Plus pays for itself, how many spots today’s audience can support, who we go to first, the counter script and objections, the ten-spot pilot, and the four things to build before the first one pays.</div>
 </section>
 
 <section id="s4">
@@ -331,36 +300,6 @@
     {id:'lab', latex:'(40, 199)', color:C.orange, pointSize:9, showLabel:true, label:'40 plates: Pro includes these', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
     {id:'n3', latex:'', text:'Plus includes 100 redemptions, then $1 each. Pro: unlimited redemptions, 40 bounties included. Drag r.'}
   ], {xAxisLabel:'bounty plates bought this month', yAxisLabel:'$ billed per month'});
-
-  // 3½ · Value back to a Plus customer vs redemptions. V = x·(k·m·c − d)
-  calc('g3b', {left:-2, right:40, bottom:-20, top:420}, [
-    {id:'k',  latex:'k=0.9',  sliderBounds:{min:0.3,max:1,step:0.05}},
-    {id:'m',  latex:'m=0.68'},
-    {id:'c1', latex:'c_1=12', sliderBounds:{min:5,max:40,step:1}},
-    {id:'d1', latex:'d_1=1.5', sliderBounds:{min:0,max:10,step:0.25}},
-    {id:'c2', latex:'c_2=28', sliderBounds:{min:5,max:60,step:1}},
-    {id:'d2', latex:'d_2=4', sliderBounds:{min:0,max:15,step:0.25}},
-    {id:'cafe', latex:'y=x(kmc_1-d_1)', color:C.blue, lineWidth:2.5},
-    {id:'full', latex:'y=x(kmc_2-d_2)', color:C.orange, lineWidth:2.5},
-    {id:'fee',  latex:'y=79', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'be1', latex:'\\left(\\frac{79}{kmc_1-d_1}, 79\\right)', color:C.blue, pointSize:10, showLabel:true, label:'café breaks even', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
-    {id:'be2', latex:'\\left(\\frac{79}{kmc_2-d_2}, 79\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service breaks even', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
-    {id:'n3b', latex:'', text:'m = gross margin after food cost. Value = redemptions × (k·m·check − deal cost). Drag k from 0.65 (any hour) to 0.9 (dead window).'}
-  ], {xAxisLabel:'redemptions this month', yAxisLabel:'$ of profit back'});
-
-  // 3½ · Paying spots the audience supports. y = x·r / B
-  calc('g3c', {left:-20, right:1100, bottom:-5, top:180}, [
-    {id:'r',  latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
-    {id:'B1', latex:'B_1=14', sliderBounds:{min:3,max:40,step:1}},
-    {id:'B2', latex:'B_2=6',  sliderBounds:{min:2,max:30,step:1}},
-    {id:'s1', latex:'y=\\frac{rx}{B_1}', color:C.blue, lineWidth:2.5},
-    {id:'s2', latex:'y=\\frac{rx}{B_2}', color:C.orange, lineWidth:2.5},
-    {id:'tod', latex:'x-125=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
-    {id:'tgt', latex:'y=26', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
-    {id:'t1', latex:'\\left(125, \\frac{125r}{B_1}\\right)', color:C.blue, pointSize:10, showLabel:true, label:'cafés today', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
-    {id:'t2', latex:'\\left(125, \\frac{125r}{B_2}\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service today', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
-    {id:'n3c', latex:'', text:'Students make r×x redemptions a month; each spot needs B to cover $79. Drag r, B₁, B₂.'}
-  ], {xAxisLabel:'monthly active students', yAxisLabel:'paying spots that break even'});
 
   // 4 · One Spot Plus customer: pay vs keep vs crumbs funded
   calc('g4', {left:-5, right:120, bottom:-30, top:460}, [

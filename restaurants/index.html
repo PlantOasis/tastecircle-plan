@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taste Circle for Restaurants — the offer and how we sell it</title>
+<script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<style>
+  :root{--navy:#19203A;--navy-2:#3D4A6B;--ink:#0b0b0b;--ink-2:#52514e;--muted:#8a897f;--paper:#fcfcfb;--card:#fff;--line:#e6e4dd;
+    --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;}
+  *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+  body{font-family:Poppins,-apple-system,"Segoe UI",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 22px 80px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:34px}
+  .eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-2);font-weight:600}
+  .eyebrow a{color:inherit}
+  h1{font-size:2.1rem;line-height:1.15;margin:8px 0 10px;color:var(--navy)}
+  .lede{font-size:1.08rem;color:var(--ink-2);max-width:62ch}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 0}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .fact b{display:block;font-size:1.35rem;color:var(--navy);line-height:1.1}.fact span{font-size:.78rem;color:var(--muted)}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+  nav.toc a{font-size:.8rem;color:var(--navy-2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--card)}
+  section{margin:0 0 54px}
+  h2{font-size:1.45rem;color:var(--navy);margin:0 0 6px;line-height:1.2}
+  h2 .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:.85rem;text-align:center;line-height:28px;margin-right:10px;vertical-align:3px}
+  h3{font-size:1.05rem;color:var(--navy);margin:18px 0 6px}
+  .sub{color:var(--ink-2);margin:0 0 16px;font-size:1rem}
+  p{margin:0 0 12px;max-width:70ch} ul,ol{margin:0 0 12px 20px;max-width:70ch} li{margin:3px 0}
+  .graph{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0 10px}
+  .graph .cap{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .graph .cap b{font-size:.95rem;color:var(--navy)}.graph .cap span{font-size:.78rem;color:var(--muted)}
+  .desmos{width:100%;height:420px}
+  .read{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 6px}
+  @media(max-width:640px){.read{grid-template-columns:1fr}.desmos{height:380px}}
+  .read div{background:#f4f3ee;border-radius:12px;padding:12px 14px;font-size:.9rem}
+  .read div b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);margin-bottom:4px}
+  .key{display:flex;flex-wrap:wrap;gap:10px 16px;padding:10px 16px;font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line)}
+  .key i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0 6px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:#f4f3ee}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .callout{border-left:3px solid var(--s2);background:#fff7f3;padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:.93rem;max-width:70ch}
+  .callout b{color:var(--navy)}
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .tier.hi{border-color:var(--navy);box-shadow:0 0 0 2px rgba(25,32,58,.08)}
+  .tier .name{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);font-weight:600}
+  .tier .price{font-size:1.7rem;color:var(--navy);font-weight:700;line-height:1.1;margin:4px 0 2px}
+  .tier .per{font-size:.78rem;color:var(--muted);margin-bottom:10px}
+  .tier ul{margin-left:16px;font-size:.88rem}
+  .script{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0;max-width:70ch}
+  .script p{font-style:italic;color:var(--ink-2)}
+  .script .who{font-style:normal;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-2);font-weight:600;margin-bottom:4px}
+  .obj{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+  .obj div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.9rem}
+  .obj b{display:block;color:var(--navy);margin-bottom:3px}
+  footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Taste Circle · restaurants · October 2026 · <a href="../">← the full plan</a></div>
+  <h1>Restaurants: the offer, the math, and how we sell it</h1>
+  <p class="lede">Restaurants are the core customer and the first thing we build for. This is the whole restaurant side in one place: what a Spot is, what Plus and Pro cost and include, why a restaurant comes out ahead (with the numbers you can drag), who we go to first, what we say at the counter, and what has to exist in the app before the first one pays.</p>
+  <div class="facts">
+    <div class="fact"><b>282</b><span>restaurants in Norman</span></div>
+    <div class="fact"><b>114</b><span>already have student plates</span></div>
+    <div class="fact"><b>169</b><span>cafés, coffee, fast-casual</span></div>
+    <div class="fact"><b>110</b><span>full-service</span></div>
+    <div class="fact"><b>10,090</b><span>plates students have posted</span></div>
+    <div class="fact"><b>~125</b><span>students active a month today</span></div>
+  </div>
+  <nav class="toc">
+    <a href="#s1">1 · The pitch in one breath</a><a href="#s2">2 · Why an empty seat is the product</a><a href="#s3">3 · The three tiers</a><a href="#s4">4 · Does it pay for itself?</a><a href="#s5">5 · How many can we support</a><a href="#s6">6 · Who we go to first</a><a href="#s7">7 · At the counter</a><a href="#s8">8 · The pilot</a><a href="#s9">9 · Build order</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <h2><span class="n">1</span>The pitch in one breath</h2>
+  <p class="sub">“Fill your dead hours with OU students, and only pay when they show up.”</p>
+  <p>Every restaurant near campus has the same two problems: Tuesday at 3pm is empty, and marketing is their second-biggest headache (Toast, 2025). They don’t want another ad platform. They want people in seats they can see, and proof it worked.</p>
+  <p>So the offer is simple. Students already post photos of your food on Taste Circle. Claim your page for free and answer them. Then, for $79 a month, put a deal on the hours you pick — “free side with any bowl, weekdays 2–5” — and students spend the Crumbs they’ve earned to unlock it. They show a code at the counter. You see every redemption, and once a month you get a report: how many came, when, what they ordered, how you rank against the five spots nearest you.</p>
+  <div class="callout"><b>The line that lands:</b> “You only win if the seat was empty. So we only let the deal run when your seats are empty.”</div>
+</section>
+
+<section id="s2">
+  <h2><span class="n">2</span>Why an empty seat is the product</h2>
+  <p class="sub">A restaurant keeps $1–3 of an average $30 check. On a dead-hour check it keeps closer to $20.</p>
+  <p>Restaurants run on 3–9% net margins: of a $30 check, roughly $10 is food, $10 is labor, $3 is rent, $3 is everything else, and a dollar or two is profit. But labor and rent are paid whether the chair is full or not. A student who walks in at 3pm because of a Crumbs deal only has to cover the food — so that visit is worth $15–20 of profit, not $2. That is the entire economic argument, and it only holds if the visit <b>wouldn’t have happened anyway</b>. Which is why the deal window matters more than the deal.</p>
+  <div class="graph">
+    <div class="cap"><b>What one extra customer is worth</b><span>x = size of the check ($) · y = profit the restaurant keeps from that visit</span></div>
+    <div id="g2" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s3)"></i>A visit that fills an empty seat (only food to cover)</span><span><i style="background:var(--s1)"></i>An average visit (carries its share of labor and rent)</span><span><i style="background:var(--s2)"></i>The same empty-seat visit after a deal costing d</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>f</code> — food cost as a share of the check (0.32 is typical). <code>d</code> — what the deal costs the kitchen in ingredients. <code>n</code> — the restaurant’s net margin on an ordinary visit (0.05).</div>
+    <div><b>Read it</b> On a $28 check, an average customer is worth about <b>$1.40</b>; an empty-seat customer is worth <b>$19</b>; the same customer after a $4 deal is still worth <b>$15</b>. Ten times the average. A deal in a dead hour is not a discount — it’s the cheapest customer a restaurant will ever buy.</div>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="n">3</span>The three tiers</h2>
+  <p class="sub">Free to claim. $79 to fill dead hours. $199 to be everywhere.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Your Spot</div><div class="price">Free</div><div class="per">claim it in 2 minutes</div>
+      <ul><li>The page students already made for you: every plate, every rating</li><li>Hours, menu, order links</li><li>Reply to plates as the restaurant</li><li>Verified badge once claimed</li></ul>
+    </div>
+    <div class="tier hi">
+      <div class="name">Spot Plus</div><div class="price">$79<span style="font-size:1rem;font-weight:500"> / mo</span></div><div class="per">$790 a year · the one we sell first</div>
+      <ul><li><b>Crumbs deals in the hours you pick</b> — any days, any windows, as many as you like</li><li><b>Unlimited redemptions</b> inside those windows</li><li>Up to 3 deals + a punch card</li><li>Listed on the Crumbs map where students look for places to spend</li><li>Counter QR → opens the camera tagged to you</li><li>Plate Wall: your best student photos on your own website</li><li>Monthly Spot Report</li></ul>
+    </div>
+    <div class="tier">
+      <div class="name">Spot Pro</div><div class="price">$199<span style="font-size:1rem;font-weight:500"> / mo</span></div><div class="per">$1,990 a year</div>
+      <ul><li>Everything in Plus</li><li><b>Deals at any hour</b>, not just windows</li><li>40 Plate Bounties a month included ($120 value): students earn bonus Crumbs for posting at your spot</li><li>Featured: pinned in “Top spots near campus”, map highlight, one Spotlight week a month</li><li>Group and catering requests first, no lead fee</li><li>One Taste Circle Instagram/TikTok feature a month</li><li>The quarterly Norman Dining Report</li></ul>
+    </div>
+  </div>
+  <div class="callout"><b>What changed from the first draft of the plan.</b> Plus used to include 100 redemptions and charge $1 for each one after. We dropped that: a redeemed visit in a dead hour is revenue for the restaurant even with the deal, so capping it punishes the exact behaviour we want, and the plan only had $400 a month riding on those fees. The weak-hour window is the safety valve instead — a restaurant cannot lose money on a deal that only runs when its seats are empty. Pro is now meaningfully different: deals at <b>any</b> hour, plus bounties and visibility, instead of just “Plus with 40 bounties prepaid.”</div>
+  <p>Pay-as-you-go on top of any tier: <b>Plate Bounties $3</b> per verified plate (the student gets 150 Crumbs, we keep $1.50), <b>Group requests $20</b> per accepted booking, <b>Fundraiser Nights $75</b>, <b>Opening Week $499</b> for new restaurants.</p>
+</section>
+
+<section id="s4">
+  <h2><span class="n">4</span>Does Plus pay for itself?</h2>
+  <p class="sub">A sit-down spot needs about 6 redemptions a month. A café needs about 14.</p>
+  <p>The value of one redemption is: the share of redeemers who are genuinely new, times the gross profit on their check (about 68% after food cost), minus what the deal cost in ingredients. The share that’s new is the number the window controls. At any hour, deal research puts it around 65% — a third of redeemers were coming anyway. In a dead window it’s closer to 90%, because almost nobody was going to be there.</p>
+  <table>
+    <tr><th></th><th>Campus café / fast-casual</th><th>Full-service spot</th></tr>
+    <tr><td>Typical student check</td><td class="num">$12</td><td class="num">$28</td></tr>
+    <tr><td>Gross profit on it (≈68%)</td><td class="num">$8.16</td><td class="num">$19.04</td></tr>
+    <tr><td>Deal cost in ingredients</td><td class="num">$1.50</td><td class="num">$4.00</td></tr>
+    <tr><td>Value per redemption, <b>any hour</b> (65% new)</td><td class="num">$3.80</td><td class="num">$8.40</td></tr>
+    <tr><td>Value per redemption, <b>weak hours only</b> (90% new)</td><td class="num"><b>$5.85</b></td><td class="num"><b>$13.10</b></td></tr>
+    <tr><td>Redemptions a month to cover $79, weak hours only</td><td class="num"><b>14</b> (≈3 a week)</td><td class="num"><b>6</b> (≈1–2 a week)</td></tr>
+  </table>
+  <div class="graph">
+    <div class="cap"><b>What one Spot Plus customer gets back</b><span>x = redemptions this month · y = $ of profit from those visits</span></div>
+    <div id="g4" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Café: check c₁, deal cost d₁</span><span><i style="background:var(--s2)"></i>Full-service: check c₂, deal cost d₂</span><span><i style="background:var(--s4)"></i>The $79 they paid</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>k</code> — the share of redeemers who are truly new. Set it to 0.65 for any-hour deals, 0.9 for a dead window. <code>c₁ c₂</code> the checks, <code>d₁ d₂</code> what each deal costs the kitchen. The dots mark breakeven.</div>
+    <div><b>Read it</b> Moving k from 0.65 to 0.9 roughly <b>halves</b> the redemptions a spot needs. Six a month for a sit-down place is a low bar; fourteen for a café is one student most weekdays. Everything past breakeven is the restaurant’s — we don’t take a cut of the check.</div>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="n">5</span>How many restaurants the audience can support</h2>
+  <p class="sub">The constraint is us, not them. Students redeem a few deals a month, spread across every spot selling them.</p>
+  <p>If a typical active student redeems about two deals a month, the platform produces <code>2 × (monthly active students)</code> redemptions in total. Divide that by what one spot needs to break even and you get the number of paying restaurants we can keep happy. Sign more than that and redemptions per spot thin out, the report shows it, and they leave.</p>
+  <div class="graph">
+    <div class="cap"><b>Paying spots the audience supports</b><span>x = monthly active students · y = Plus customers that still break even</span></div>
+    <div id="g5" class="desmos"></div>
+    <div class="key"><span><i style="background:var(--s1)"></i>Cafés (need B₁ redemptions each)</span><span><i style="background:var(--s2)"></i>Full-service (need B₂ each)</span><span><i style="background:var(--s3)"></i>Today: ~125 monthly actives</span><span><i style="background:var(--s4)"></i>Year-one target: 26 paying</span></div>
+  </div>
+  <div class="read">
+    <div><b>Drag</b> <code>r</code> — deals one active student redeems a month. <b>Two is a guess</b> — the app has never had live deals, so nobody has measured it. <code>B₁ B₂</code> are the breakeven counts from the graph above.</div>
+    <div><b>Read it</b> Today’s ~125 monthly actives support about <b>18 café-type or 40 full-service Plus customers</b>. Rule of thumb: <b>7 active students per café, 3 per sit-down spot.</b> Twenty-six paying restaurants is reachable now if the mix leans full-service — which is also the mix that breaks even fastest.</div>
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="n">6</span>Who we go to first</h2>
+  <p class="sub">Full-service spots with plates and a dead afternoon. In that order.</p>
+  <table>
+    <tr><th>Priority</th><th>Who</th><th>Why them</th><th>How many</th></tr>
+    <tr><td><b>1</b></td><td>Full-service spots on Campus Corner and Main St that already have student plates</td><td>Lowest breakeven (6 redemptions), a 2–5pm lull every weekday, and we open with “17 students have already posted your food”</td><td class="num">~40</td></tr>
+    <tr><td><b>2</b></td><td>Cafés and bowl / poke / smoothie spots near campus with plates</td><td>The students who log nutrition eat here; the Crumbs map and Verified Macros both point at them</td><td class="num">~70</td></tr>
+    <tr><td><b>3</b></td><td>Restaurants about to open</td><td>Opening Week ($499): the Spot is live before the doors are, 50 bounties fill their empty Google photos with real plates in week one. We see them 30–90 days early through liquor-licence filings</td><td class="num">2–4 a month</td></tr>
+    <tr><td><b>4</b></td><td>Everything else in Norman without plates yet</td><td>Free claim only until students post there — a deal nobody can find helps no one</td><td class="num">~170</td></tr>
+  </table>
+  <p>The free claim is the door for all of them. A claimed Spot with 30 days of plate data is the easiest upgrade conversation there is: we show them their own numbers.</p>
+</section>
+
+<section id="s7">
+  <h2><span class="n">7</span>At the counter</h2>
+  <p class="sub">Walk-ins Tuesday and Thursday, 2–4pm — the lull is when owners talk. Phone out, their Spot page open.</p>
+  <div class="script">
+    <div class="who">Open</div>
+    <p>“Hi — I’m with Taste Circle, the OU food app. Seventeen students have posted photos of your food in the last month; here they are. The page is yours for free if you want it — hours, menu, you can reply to them. Takes two minutes.”</p>
+    <div class="who" style="margin-top:12px">The ask</div>
+    <p>“The thing most places add is a deal that only runs when you’re slow. You pick the hours — say weekdays two to five — students unlock it with Crumbs they’ve earned by posting, show a code here, you ring it up. Seventy-nine a month, as many redemptions as you get. If six students a month who weren’t coming anyway show up in those hours, it’s paid for. Everything after that is yours; we don’t touch the check.”</p>
+    <div class="who" style="margin-top:12px">Close</div>
+    <p>“First month’s the trial. At thirty days you get the report — who came, when, what they ordered, how you rank against the five spots around you — and you decide with your own numbers.”</p>
+  </div>
+  <h3>The objections, and the answers</h3>
+  <div class="obj">
+    <div><b>“We already have Instagram.”</b>Instagram shows your food to people who already follow you. These are students who haven’t been in yet, and they only see your deal at the hour you want them. Also — these photos are theirs, not yours; you’re getting content you didn’t have to make.</div>
+    <div><b>“Discounts attract people who’d never pay full price.”</b>That’s true for all-day coupons; it’s why Groupon burned people. This one only exists when the seat is empty. A student who comes at 3pm for a free side is a seat you weren’t selling anyway, and half of them bring a friend who pays full price.</div>
+    <div><b>“How do I know it’s working?”</b>Every redemption is logged with the time it landed. Your monthly report shows redemptions inside your windows against your normal traffic in those hours. If it isn’t working, you’ll see it before we do — and you cancel.</div>
+    <div><b>“What does it cost me per redemption?”</b>Just the food in the deal — a free side is about a dollar fifty of ingredients. We don’t take a percentage and there’s no per-redemption fee on Plus.</div>
+    <div><b>“Seventy-nine is a lot.”</b>Square Loyalty is $60–140 with no students attached. Yelp’s upgrade is about $180. One table on one Tuesday covers it.</div>
+    <div><b>“Can people cheat the code?”</b>The code changes, and the app checks the student is standing here. A screenshot from last week doesn’t work.</div>
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="n">8</span>The pilot</h2>
+  <p class="sub">The first ten Plus customers are an experiment to find one number: how many deals a student actually redeems a month.</p>
+  <ul>
+    <li><b>Ten spots, six full-service and four cafés</b>, all with existing plates, within a short walk of campus.</li>
+    <li><b>First 60 days free</b> in exchange for one thing: they let us publish their results (anonymised) in the next pitch. After that, $79 on a card, cancel any time.</li>
+    <li><b>Every spot sets at least two windows</b> covering their slowest 10+ hours a week. We help them pick from their own plate timestamps.</li>
+    <li><b>We measure</b> redemptions per spot per week, redemptions per active student per month (the <code>r</code> in section 5), the share of redeemers who had never posted at that spot before (our proxy for “new”), and whether the restaurant renews at day 60.</li>
+    <li><b>Success looks like:</b> median spot above its breakeven line by day 45, r ≥ 1.5, and 7 of 10 converting to paid.</li>
+  </ul>
+  <div class="callout"><b>Honest caveats to carry into every pitch:</b> the 65% / 90% “truly new” figures come from deal-platform research, not Norman; the $12 / $28 checks are estimates until the first redemption logs exist; and none of these prices has been tested on a buyer yet. The pilot is how we replace every one of those guesses with a measured number.</div>
+</section>
+
+<section id="s9">
+  <h2><span class="n">9</span>What has to exist in the app first</h2>
+  <p class="sub">Four things, in this order. Nothing in this document can be sold until the first two are live.</p>
+  <ol>
+    <li><b>Deal windows.</b> A deal carries days and a time range. Outside the window the deal is hidden in the app and the code will not validate. This is the whole product.</li>
+    <li><b>Proof of visit.</b> A rotating code or QR the staff show, plus a location check on the student’s phone. Today’s code is a fixed string that can be photographed and shared. Deals, Bounties and Nights all depend on this.</li>
+    <li><b>A redemption log</b> the restaurant can read: time, deal, window it landed in. Also the billing meter for anything pay-as-you-go.</li>
+    <li><b>The monthly Spot Report:</b> plates, ratings, rank against the five nearest spots, top dishes, and redemptions inside windows vs. their normal traffic in those hours. The report is the result they are paying for, and it is what makes them renew.</li>
+  </ol>
+  <p>Already in the app: Crumbs, the partner screen with rewards and punch cards, the Crumbs map, plate tagging by location, and the server-side redemption function. The gap is windows, the code, and the report.</p>
+</section>
+
+<footer>
+  Part of the Taste Circle plan (<a href="../">the full document</a>). Prices are proposals, untested with buyers. Margin figures: NRA and Toast industry averages; comparables from each vendor’s own price page. Graphs are live Desmos calculators — drag any slider, or type over a number in the left panel.
+</footer>
+</div>
+
+<script>
+(function(){
+  if (!window.Desmos) { document.querySelectorAll('.desmos').forEach(function(el){ el.innerHTML='<div style="padding:20px;color:#52514e;font-size:.9rem">Graph couldn’t load — this page needs an internet connection to reach desmos.com.</div>'; }); return; }
+  var C = {blue:'#2a78d6', orange:'#eb6834', aqua:'#1baf7a', yellow:'#eda100', pink:'#e87ba4'};
+  function calc(id, bounds, exprs, opts){
+    var el=document.getElementById(id); if(!el) return;
+    var c=Desmos.GraphingCalculator(el, Object.assign({keypad:false, settingsMenu:false, expressionsCollapsed:false, border:false, zoomButtons:true, xAxisLabel:'', yAxisLabel:'', fontSize:13}, opts||{}));
+    c.setMathBounds(bounds); exprs.forEach(function(e){ c.setExpression(e); }); el._calc=c;
+  }
+
+  // 2 · Value of one extra customer vs check size
+  calc('g2', {left:-2, right:60, bottom:-4, top:45}, [
+    {id:'f', latex:'f=0.32', sliderBounds:{min:0.2,max:0.5,step:0.01}},
+    {id:'d', latex:'d=4', sliderBounds:{min:0,max:12,step:0.5}},
+    {id:'n', latex:'n=0.05', sliderBounds:{min:0,max:0.15,step:0.01}},
+    {id:'empty', latex:'y=(1-f)x', color:C.aqua, lineWidth:2.5},
+    {id:'deal',  latex:'y=(1-f)x-d', color:C.orange, lineWidth:2.5},
+    {id:'avg',   latex:'y=nx', color:C.blue, lineWidth:2.5},
+    {id:'p1', latex:'(28,(1-f)28)', color:C.aqua, pointSize:10, showLabel:true, label:'empty seat, $28 check', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'p2', latex:'(28,(1-f)28-d)', color:C.orange, pointSize:10, showLabel:true, label:'same, after the deal', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'p3', latex:'(28,28n)', color:C.blue, pointSize:10, showLabel:true, label:'an average visit', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'note', latex:'', text:'Empty seat: labor and rent are already paid, so only food (f) comes out. Drag f, d, n.'}
+  ], {xAxisLabel:'size of the check ($)', yAxisLabel:'$ of profit kept'});
+
+  // 4 · Value back vs redemptions
+  calc('g4', {left:-2, right:40, bottom:-20, top:420}, [
+    {id:'k',  latex:'k=0.9',  sliderBounds:{min:0.3,max:1,step:0.05}},
+    {id:'m',  latex:'m=0.68'},
+    {id:'c1', latex:'c_1=12', sliderBounds:{min:5,max:40,step:1}},
+    {id:'d1', latex:'d_1=1.5', sliderBounds:{min:0,max:10,step:0.25}},
+    {id:'c2', latex:'c_2=28', sliderBounds:{min:5,max:60,step:1}},
+    {id:'d2', latex:'d_2=4', sliderBounds:{min:0,max:15,step:0.25}},
+    {id:'cafe', latex:'y=x(kmc_1-d_1)', color:C.blue, lineWidth:2.5},
+    {id:'full', latex:'y=x(kmc_2-d_2)', color:C.orange, lineWidth:2.5},
+    {id:'fee',  latex:'y=79', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'be1', latex:'\\left(\\frac{79}{kmc_1-d_1}, 79\\right)', color:C.blue, pointSize:10, showLabel:true, label:'café breaks even', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'be2', latex:'\\left(\\frac{79}{kmc_2-d_2}, 79\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service breaks even', labelOrientation:Desmos.LabelOrientations.ABOVE_LEFT},
+    {id:'n4', latex:'', text:'m = gross margin after food cost. Value = redemptions × (k·m·check − deal cost). k: 0.65 any hour, 0.9 dead window.'}
+  ], {xAxisLabel:'redemptions this month', yAxisLabel:'$ of profit back'});
+
+  // 5 · Supportable spots vs students
+  calc('g5', {left:-20, right:1100, bottom:-5, top:180}, [
+    {id:'r',  latex:'r=2', sliderBounds:{min:0.5,max:6,step:0.5}},
+    {id:'B1', latex:'B_1=14', sliderBounds:{min:3,max:40,step:1}},
+    {id:'B2', latex:'B_2=6',  sliderBounds:{min:2,max:30,step:1}},
+    {id:'s1', latex:'y=\\frac{rx}{B_1}', color:C.blue, lineWidth:2.5},
+    {id:'s2', latex:'y=\\frac{rx}{B_2}', color:C.orange, lineWidth:2.5},
+    {id:'tod', latex:'x-125=0', color:C.aqua, lineStyle:Desmos.Styles.DOTTED, lineWidth:2},
+    {id:'tgt', latex:'y=26', color:C.yellow, lineStyle:Desmos.Styles.DASHED, lineWidth:2},
+    {id:'t1', latex:'\\left(125, \\frac{125r}{B_1}\\right)', color:C.blue, pointSize:10, showLabel:true, label:'cafés today', labelOrientation:Desmos.LabelOrientations.BELOW_RIGHT},
+    {id:'t2', latex:'\\left(125, \\frac{125r}{B_2}\\right)', color:C.orange, pointSize:10, showLabel:true, label:'full-service today', labelOrientation:Desmos.LabelOrientations.ABOVE_RIGHT},
+    {id:'n5', latex:'', text:'Students make r×x redemptions a month; each spot needs B to cover $79. Drag r, B₁, B₂.'}
+  ], {xAxisLabel:'monthly active students', yAxisLabel:'paying spots that break even'});
+})();
+</script>
+</body>
+</html>
